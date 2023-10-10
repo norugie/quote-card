@@ -1,12 +1,13 @@
 import './App.css';
 import { useCallback, useEffect, useState } from 'react';
 
+const styles = ['orange-peel', 'notepaper', 'gradient', 'cursive-bubble', 'typewriter'];
+
 function App() {
     const [quote, setQuote] = useState("");
     const [author, setAuthor] = useState("");
     const [count, setCount] = useState(1);
     const [style, setStyle] = useState("");
-    const styles = ['orange-peel', 'notepaper', 'gradient', 'cursive-bubble', 'typewriter'];
 
     const getQuote = useCallback(async () => {
         const settings = {
