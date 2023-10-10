@@ -1,4 +1,5 @@
 import './App.css';
+import html2canvas from 'html2canvas';
 import { useCallback, useEffect, useState } from 'react';
 
 const styles = [
@@ -30,6 +31,20 @@ function App() {
         setStyle(styles[random]);
     }, []);
 
+    const getQuoteImage = async () => {
+        const element = document.getElementById('main'),
+        canvas = await html2canvas(element),
+        data = canvas.toDataURL('image/png'),
+        link = document.createElement('a');
+     
+        link.href = data;
+        link.download = 'downloaded-image.png';
+     
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
     function getCount() {
         setCount((c) => c + 1);
     }
@@ -41,24 +56,27 @@ function App() {
 
     useEffect(function() {
         getQuote();
-        console.log('i fire once');
     }, [getQuote]);
 
     return (
         <div className={style}>
-            <div className="main">
-                <span className="left">❝</span>
-                <QuoteMessage quote={quote} />
-                {/* <div className="quote">Etiam dictum finibus ligula, quis vulputate elit sodales porttitor. In fringilla laoreet faucibus. Fusce in diam ut magna eleifend iaculis in posuere eros.</div> */}
-                <span className="right">❞</span>
-                <QuoteAuthor author={author} />
-                {/* <div className="author">John Smith</div> */}
-            </div>
+            <QuoteCard quote={quote} author={author} />
             <div className="btn-group">
                 <button className="btn-reload" onClick={getQuoteAndCount}>&#x21bb; Get new quote!</button>
-                <button className="btn-save">&#x1F4BE; Save</button>
+                <button className="btn-save" onClick={getQuoteImage}>&#x1F4BE; Save</button>
             </div>
             <QuoteCount count={count} />
+        </div>
+    );
+}
+
+function QuoteCard({quote, author}) {
+    return (
+        <div id="main" className="main">
+            <span className="left">❝</span>
+            <QuoteMessage quote={quote} />
+            <span className="right">❞</span>
+            <QuoteAuthor author={author} />
         </div>
     );
 }

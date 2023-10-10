@@ -47,7 +47,7 @@ body {
 
 .btn-reload, .btn-save {
     font-size: 15px;
-    background-color: #FFFFFF;
+    background-color: #fff;
     border: 1px solid #222222;
     border-radius: 8px;
     box-sizing: border-box;
@@ -70,7 +70,7 @@ body {
 }
 
 .orange-peel .main > .quote {
-    color: white;
+    color: #fff;
     text-shadow: -1px 1px #555;
     font-style: italic;
     position: relative;
@@ -115,7 +115,7 @@ body {
     position: relative;
     line-height: 30px;
     color: #6a5f49;
-    text-shadow: 0 1px 1px white;
+    text-shadow: 0 1px 1px #fff;
     background-color: #f2f6c1;
     background-image: -webkit-radial-gradient(center, cover, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.1) 90%), -webkit-repeating-linear-gradient(top, transparent 0%, transparent 29px, rgba(239, 207, 173, 0.7) 29px, rgba(239, 207, 173, 0.7) 30px);
     border: 1px solid #c3baaa;
@@ -196,7 +196,7 @@ body {
 .gradient .main > .quote {
     position: relative;
     font-weight: 800;
-    color: #ffffff;
+    color: #fff;
     padding: 30px 0;
     z-index: 1;
     margin: 80px, auto;
@@ -280,7 +280,7 @@ body {
 .cursive-bubble .main > .author {
     position: relative;
     font-family: 'Impact', fantasy;
-    color: #ffffff;
+    color: #fff;
     font-size: 1.3rem;
     line-height: 1.2;
     margin: 0;
