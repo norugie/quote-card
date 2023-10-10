@@ -1,38 +1,317 @@
-.App {
-  text-align: center;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+    font-weight: 400;
+    background-color: #f7f2e9;
+    min-height: 100vh;
+    padding: 3.2rem;
+    padding-bottom: 6rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Main Card */
+
+#root {
+    min-height: calc(100vh - 200px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.main {
+    height: 400px;
+    width: 700px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
-.App-link {
-  color: #61dafb;
+.main > .author {  
+    &:before{
+        content: "\2014 \0020";
+    }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Card designs */
+
+/* === Orange Peel === */
+.orange-peel .main {
+    background: #ffcc00;
+    font-size: 1.75rem;
+    border: 2px solid black;
+    position: relative;
+}
+
+.orange-peel .main > .quote {
+    color: white;
+    text-shadow: -1px 1px #555;
+    font-style: italic;
+    position: relative;
+    z-index: 20;
+}
+
+.orange-peel .main > .left{
+    position: absolute;
+    top: 0;
+    left: 10px;
+    width: 150px;
+    text-align: left;
+    z-index: 10;
+    font-size: 8rem;
+    color: #336699;
+    background-color: #ffcc00;
+    line-height: 200px;
+}
+
+.orange-peel .main > .right {
+    position: absolute;
+    bottom: 0px;
+    right: 10px;
+    width: 150px;
+    text-align: right;
+    z-index: 10;
+    font-size: 8rem;
+    color: #336699;
+    background-color: #ffcc00;
+    line-height: 200px;
+}
+
+.orange-peel .main > .author {
+    font-size: 1.5rem;
+    color: #336699;
+    position: relative;
+    padding-top: 20px;
+}
+
+/* === Notepaper === */
+.notepaper .main {
+    position: relative;
+    line-height: 30px;
+    color: #6a5f49;
+    text-shadow: 0 1px 1px white;
+    background-color: #f2f6c1;
+    background-image: -webkit-radial-gradient(center, cover, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.1) 90%), -webkit-repeating-linear-gradient(top, transparent 0%, transparent 29px, rgba(239, 207, 173, 0.7) 29px, rgba(239, 207, 173, 0.7) 30px);
+    border: 1px solid #c3baaa;
+    border-radius: 0;
+    border-color: rgba(195, 186, 170, 0.9);
+    box-sizing: border-box;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.notepaper .main:before, .notepaper .main:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+}
+
+.notepaper .main:before {
+    left: 28px;
+    width: 2px;
+    border: solid #efcfad;
+    border-color: rgba(239, 207, 173, 0.9);
+    border-width: 0 1px;
+}
+
+.notepaper .main:after {
+    z-index: -1;
+    left: 0;
+    right: 0;
+    background: rgba(242, 246, 193, 0.9);
+    border: 1px solid rgba(170, 157, 134, 0.7);
+    -webkit-transform: rotate(2deg);
+    -moz-transform: rotate(2deg);
+    -ms-transform: rotate(2deg);
+    -o-transform: rotate(2deg);
+    transform: rotate(2deg);
+}
+
+.notepaper .main > .quote {
+    font-family: Georgia, serif;
+    font-size: 15px;
+}
+
+.notepaper .main > .left, .notepaper .main > .right {
+    display: inline-block;
+    vertical-align: top;
+    height: 30px;
+    line-height: 48px;
+    font-size: 50px;
+    opacity: .2;
+}
+
+.notepaper .main > .left {
+    content: '\201C';
+    margin-right: 4px;
+}
+
+.notepaper .main > .right {
+    content: '\201D';
+    text-align: right;
+    margin-left: 4px;
+}
+
+.notepaper .main > .author {
+    padding-right: 10px;
+    text-align: right;
+    font-size: 13px;
+    font-style: italic;
+    color: #84775c;
+}
+
+/* === Gradient === */
+.gradient .main {
+    background-color: #52ACFF;
+    background-image: linear-gradient(180deg, #52ACFF 25%, #FFE32C 100%);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.gradient .main > .quote {
+    position: relative;
+    font-weight: 800;
+    color: #ffffff;
+    padding: 30px 0;
+    z-index: 1;
+    margin: 80px, auto;
+    align-self: center;
+    border-top: solid 1px;
+    border-bottom: solid 1px;
+}
+
+.gradient .main > .left {
+    display: none;
+}
+
+.gradient .main > .right {
+    position: relative;
+    text-align: right;
+    color: rgba(255, 255, 255, 1);
+    font-size: 10rem;
+    line-height: 0;
+    top: 45px;
+    right: 80px;
+}
+
+.gradient .main > .author {
+    position: relative;
+    color: #292a2b;
+    font-size: 1.4rem;
+    line-height: 1;
+    z-index: 1;
+    margin-top: 30px;
+}
+
+/* === Cursive Bubble === */
+.cursive-bubble .main > .left, .cursive-bubble .main > .right {
+    display: none;
+}
+
+.cursive-bubble .main {
+    background-color: #292a2b;
+
+    position: relative;
+    align-self: center;
+}
+
+.cursive-bubble .main > .quote {
+    font-family: 'EB Garamond', serif;
+    position: relative; 
+    color: #e74848;
+    font-size: 1.7rem;
+    font-weight: normal;
+    line-height: 1;
+    margin: 0;
+    border: 2px solid #fff;
+    border: solid 2px;
+    border-radius:20px;
+    padding: 25px;
+}
+
+.cursive-bubble .main > .quote:after {
+    content:"";
+    position: absolute;
+    border: 2px solid #e74848;
+    border-radius: 0 50px 0 0;
+    width: 60px;
+    height: 60px;
+    bottom: -62px;
+    left: 50px;
+    border-bottom: none;
+    border-left: none;
+    z-index: 3; 
+}
+
+.cursive-bubble .main > .quote:before {
+    content:"";
+    position: absolute;
+    width: 80px;
+    border: 6px solid #292a2b;
+    bottom: -3px;
+    left: 50px;
+    z-index: 2;
+}
+
+.cursive-bubble .main > .author {
+    position: relative;
+    font-family: 'Impact', fantasy;
+    color: #ffffff;
+    font-size: 1.3rem;
+    line-height: 1.2;
+    margin: 0;
+    padding-top: 20px;
+    z-index: 1;
+    margin-left: 150px;
+    padding-left: 12px;
+}
+
+ 
+.cursive-bubble .main > .author:first-letter {
+    margin-left:-17px;
+}
+
+/* === Typewriter === */
+@import url('https://fonts.googleapis.com/css?family=Special+Elite');
+
+.typewriter .main {
+    font-family: 'Special Elite', cursive;
+	background: #fffdf5;
+	color: #3f3f5a;
+	display: flex;
+	flex-direction: column;
+}
+
+.typewriter .main > .quote {
+	font-weight: 100;
+	font-size: 1.25rem;
+	line-height: 1.4;
+    text-align: center;
+	position: relative;
+	margin: 0;
+	padding: .5rem;
+    z-index: 20;
+}
+
+.typewriter .main > .left,
+.typewriter .main > .right {
+	color: #f1efe6;
+	font-size: 5rem;
+	width: 100%;
+	height: 4rem;
+}
+
+.typewriter .main > .right {
+    position: relative;
+    top: -2rem;
+    text-align: right;
+}
+
+.typewriter .main > .author {
+    text-align: center;
 }

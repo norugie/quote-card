@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { useCallback, useEffect, useState } from 'react';
 
@@ -6,8 +5,10 @@ function App() {
     const [quote, setQuote] = useState("");
     const [author, setAuthor] = useState("");
     const [count, setCount] = useState(1);
+    const [style, setStyle] = useState("");
+    const styles = ['orange-peel', 'notepaper', 'gradient', 'cursive-bubble', 'typewriter'];
 
-    const getQuote = useCallback ( async () => {
+    const getQuote = useCallback(async () => {
         const settings = {
             method: 'GET',
             headers: { 'x-api-key': 'pkfMES5tg+if6Etza7JmVA==5IoTAx0r60T2ycdi' }
@@ -17,6 +18,9 @@ function App() {
 
         setQuote(data[0].quote);
         setAuthor(data[0].author);
+
+        const random = Math.floor(Math.random() * styles.length);
+        setStyle(styles[random]);
     }, []);
 
     function getCount() {
@@ -33,24 +37,25 @@ function App() {
     }, [getQuote]);
 
     return (
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
+        <div className={style}>
+            <div className="main">
+                <span className="left">❝</span>
                 <QuoteMessage quote={quote} />
+                <span className="right">❞</span>
                 <QuoteAuthor author={author} />
-                <button className="App-button" onClick={getQuoteAndCount }>Get quote!</button>
-                <QuoteCount count={count} />
-            </header>
+            </div>
+            <button className="app-button" onClick={getQuoteAndCount }>Get quote!</button>
+            <QuoteCount count={count} />
         </div>
     );
 }
 
 function QuoteMessage({quote}) {
-    return <p>{quote}</p>;
+    return <div className="quote">{quote}</div>;
 }
 
 function QuoteAuthor({author}) {
-    return <p>{author}</p>
+    return <div className="author">{author}</div>
 }
 
 function QuoteCount({count}) {
