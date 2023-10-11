@@ -61,10 +61,7 @@ function App() {
     return (
         <div className={style}>
             <QuoteCard quote={quote} author={author} />
-            <div className="btn-group">
-                <button className="btn-reload" onClick={getQuoteAndCount}>&#x21bb; Get new quote!</button>
-                <button className="btn-save" onClick={getQuoteImage}>&#x1F4BE; Save</button>
-            </div>
+            <QuoteButtonGroup getQuoteAndCount={getQuoteAndCount} getQuoteImage={getQuoteImage} />
             <QuoteCount count={count} />
         </div>
     );
@@ -87,6 +84,15 @@ function QuoteMessage({quote}) {
 
 function QuoteAuthor({author}) {
     return <div className="author">{author}</div>;
+}
+
+function QuoteButtonGroup({getQuoteAndCount, getQuoteImage}) {
+    return (
+        <div className="btn-group">
+            <button className="btn-reload" onClick={getQuoteAndCount}>&#x21bb; Get new quote!</button>
+            <button className="btn-save" onClick={getQuoteImage}>&#x1F4BE; Save</button>
+        </div>
+    );
 }
 
 function QuoteCount({count}) {
