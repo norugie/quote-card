@@ -19,9 +19,9 @@ function App() {
     const getQuote = useCallback(async () => {
         const   settings = {
                     method: 'GET',
-                    headers: { 'x-api-key': 'pkfMES5tg+if6Etza7JmVA==5IoTAx0r60T2ycdi' }
+                    headers: { 'x-api-key': 'z4n698PUhFuRwC2rG5vHchpEa4yxzS8wBPYv5k2R' }
                 },
-                res = await fetch('https://api.api-ninjas.com/v1/quotes', settings),
+                res = await fetch("https://api.api-ninjas.com/v1/quotes", settings),
                 data = await res.json();
 
         setQuote(data[0].quote);
@@ -32,10 +32,10 @@ function App() {
     }, []);
 
     const getQuoteImage = async () => {
-        const   element = document.getElementById('main'),
-                canvas = await html2canvas(element),
-                data = canvas.toDataURL('image/png'),
-                link = document.createElement('a');
+        const element = document.getElementById('main'),
+        canvas = await html2canvas(element),
+        data = canvas.toDataURL('image/png'),
+        link = document.createElement('a');
      
         link.href = data;
         link.download = 'downloaded-image.png';
