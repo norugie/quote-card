@@ -19,7 +19,10 @@ function App() {
     const getQuote = useCallback(async () => {
         const settings = {
             method: 'GET',
-            headers: { 'x-api-key': 'z4n698PUhFuRwC2rG5vHchpEa4yxzS8wBPYv5k2R' }
+            headers: { 
+                'x-api-key': 'z4n698PUhFuRwC2rG5vHchpEa4yxzS8wBPYv5k2R',
+                'content-type': 'application/json'
+            }
         }
         const res = await fetch("https://api.api-ninjas.com/v1/quotes", settings);
         const data = await res.json();
