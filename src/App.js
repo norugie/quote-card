@@ -11,18 +11,18 @@ const styles = [
 ];
 
 function App() {
-    const [quote, setQuote] = useState('');
-    const [author, setAuthor] = useState('');
-    const [count, setCount] = useState(1);
-    const [style, setStyle] = useState('');
+    const   [quote, setQuote] = useState(''),
+            [author, setAuthor] = useState(''),
+            [count, setCount] = useState(1),
+            [style, setStyle] = useState('');
 
     const getQuote = useCallback(async () => {
-        const settings = {
-            method: 'GET',
-            headers: { 'x-api-key': 'pkfMES5tg+if6Etza7JmVA==5IoTAx0r60T2ycdi' }
-        }
-        const res = await fetch("https://api.api-ninjas.com/v1/quotes", settings);
-        const data = await res.json();
+        const   settings = {
+                    method: 'GET',
+                    headers: { 'x-api-key': 'pkfMES5tg+if6Etza7JmVA==5IoTAx0r60T2ycdi' }
+                },
+                res = await fetch('https://api.api-ninjas.com/v1/quotes', settings),
+                data = await res.json();
 
         setQuote(data[0].quote);
         setAuthor(data[0].author);
@@ -32,10 +32,10 @@ function App() {
     }, []);
 
     const getQuoteImage = async () => {
-        const element = document.getElementById('main'),
-        canvas = await html2canvas(element),
-        data = canvas.toDataURL('image/png'),
-        link = document.createElement('a');
+        const   element = document.getElementById('main'),
+                canvas = await html2canvas(element),
+                data = canvas.toDataURL('image/png'),
+                link = document.createElement('a');
      
         link.href = data;
         link.download = 'downloaded-image.png';
