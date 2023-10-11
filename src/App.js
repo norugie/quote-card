@@ -11,10 +11,10 @@ const styles = [
 ];
 
 function App() {
-    const [quote, setQuote] = useState("");
-    const [author, setAuthor] = useState("");
+    const [quote, setQuote] = useState('');
+    const [author, setAuthor] = useState('');
     const [count, setCount] = useState(1);
-    const [style, setStyle] = useState("");
+    const [style, setStyle] = useState('');
 
     const getQuote = useCallback(async () => {
         const settings = {
