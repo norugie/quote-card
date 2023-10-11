@@ -21,7 +21,7 @@ function App() {
             method: 'GET',
             headers: { 'x-api-key': 'z4n698PUhFuRwC2rG5vHchpEa4yxzS8wBPYv5k2R' }
         }
-        const res = await fetch("https://api.api-ninjas.com/v1/quotes", settings);
+        const res = await fetch('https://api.api-ninjas.com/v1/quotes', settings);
         const data = await res.json();
 
         setQuote(data[0].quote);
@@ -61,7 +61,6 @@ function App() {
     return (
         <div className={style}>
             <QuoteCard quote={quote} author={author} />
-            
             <div className="btn-group">
                 <button className="btn-reload" onClick={getQuoteAndCount}>&#x21bb; Get new quote!</button>
                 <button className="btn-save" onClick={getQuoteImage}>&#x1F4BE; Save</button>
