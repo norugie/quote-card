@@ -11,18 +11,18 @@ const styles = [
 ];
 
 function App() {
-    const   [quote, setQuote] = useState(''),
-            [author, setAuthor] = useState(''),
-            [count, setCount] = useState(1),
-            [style, setStyle] = useState('');
+    const [quote, setQuote] = useState('');
+    const [author, setAuthor] = useState('');
+    const [count, setCount] = useState(1);
+    const [style, setStyle] = useState('');
 
     const getQuote = useCallback(async () => {
-        const   settings = {
-                    method: 'GET',
-                    headers: { 'x-api-key': 'z4n698PUhFuRwC2rG5vHchpEa4yxzS8wBPYv5k2R' }
-                },
-                res = await fetch("https://api.api-ninjas.com/v1/quotes", settings),
-                data = await res.json();
+        const settings = {
+            method: 'GET',
+            headers: { 'x-api-key': 'z4n698PUhFuRwC2rG5vHchpEa4yxzS8wBPYv5k2R' }
+        }
+        const res = await fetch("https://api.api-ninjas.com/v1/quotes", settings);
+        const data = await res.json();
 
         setQuote(data[0].quote);
         setAuthor(data[0].author);
@@ -61,7 +61,11 @@ function App() {
     return (
         <div className={style}>
             <QuoteCard quote={quote} author={author} />
-            <QuoteButtonGroup getQuoteAndCount={getQuoteAndCount} getQuoteImage={getQuoteImage} />
+            
+            <div className="btn-group">
+                <button className="btn-reload" onClick={getQuoteAndCount}>&#x21bb; Get new quote!</button>
+                <button className="btn-save" onClick={getQuoteImage}>&#x1F4BE; Save</button>
+            </div>
             <QuoteCount count={count} />
         </div>
     );
@@ -84,15 +88,6 @@ function QuoteMessage({quote}) {
 
 function QuoteAuthor({author}) {
     return <div className="author">{author}</div>;
-}
-
-function QuoteButtonGroup({getQuoteAndCount, getQuoteImage}) {
-    return (
-        <div className="btn-group">
-            <button className="btn-reload" onClick={getQuoteAndCount}>&#x21bb; Get new quote!</button>
-            <button className="btn-save" onClick={getQuoteImage}>&#x1F4BE; Save</button>
-        </div>
-    );
 }
 
 function QuoteCount({count}) {
