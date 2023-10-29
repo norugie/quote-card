@@ -1,6 +1,6 @@
 {
-  "short_name": "Quote Generator",
-  "name": "Quote Generator",
+  "short_name": "quote-card",
+  "name": "Quote Card Generator App",
   "icons": [
     {
       "src": "favicon.ico",
